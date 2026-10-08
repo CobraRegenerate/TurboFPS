@@ -1,0 +1,71 @@
+# C++ Build outputs
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+.vsconfig
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+compile_commands.json
+
+# Build systems
+Debug/
+Release/
+RelWithDebInfo/
+MinSizeRel/
+x64/
+x86/
+ARM/
+ARM64/
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.ipa
+*.apk
+*.aar
+*.lib
+*.pdb
+*.ilk
+*.exp
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+*.cache
+
+# Downloads (from MediaFire typically)
+releases/*.zip
+releases/*.rar
+*.7z
+
+# Documentation build
+docs/_build/
+site/

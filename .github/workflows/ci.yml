@@ -1,0 +1,68 @@
+name: CI Build
+
+on:
+  push:
+    branches: [main, develop]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build (MSVC, ${{ matrix.configuration }})
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Configure (CMake)
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.configuration }}
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.configuration }}
+
+      - name: Run smoke test
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem -Path build -Recurse -Filter "TurboFPS.exe" | Select-Object -First 1
+          if (-not $exe) { throw "TurboFPS.exe not found" }
+          # --version prints and exits; safe in CI (no UI, no MediaFire redirect)
+          & $exe.FullName --version
+          if ($LASTEXITCODE -ne 0) { throw "Smoke test failed" }
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TurboFPS-${{ matrix.configuration }}
+          path: build/**/TurboFPS.exe
+
+  release:
+    name: Attach to Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: TurboFPS-Release
+          path: artifact
+
+      - name: Zip package
+        shell: pwsh
+        run: Compress-Archive -Path artifact\* -DestinationPath TurboFPS-${{ github.ref_name }}-windows.zip
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: TurboFPS-${{ github.ref_name }}-windows.zip
